@@ -177,6 +177,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1317632517}
   m_RootOrder: 0
+--- !u!1 &218645812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 218645813}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &218645813
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218645812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.141, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 989848113}
+  m_RootOrder: 1
 --- !u!1001 &247544963
 Prefab:
   m_ObjectHideFlags: 0
@@ -366,7 +394,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 0a1a279edc36fb3459c95bb5a2a91e76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.996
+      value: -4.42
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0a1a279edc36fb3459c95bb5a2a91e76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -374,7 +402,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0a1a279edc36fb3459c95bb5a2a91e76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.774
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0a1a279edc36fb3459c95bb5a2a91e76, type: 3}
       propertyPath: m_LocalRotation.x
@@ -654,10 +682,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7179e9a6afcdb449516d03e78ebd52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 1.539
+  WalkSpeed: 1.898
   StrafSpeed: 1.28
   roationSpeedX: 101.3
-  roationSpeedY: 85.9
+  roationSpeedY: 103.5
 --- !u!1 &1029563427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1445,7 @@ GameObject:
   - 33: {fileID: 2076719137}
   - 64: {fileID: 2076719136}
   - 23: {fileID: 2076719135}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

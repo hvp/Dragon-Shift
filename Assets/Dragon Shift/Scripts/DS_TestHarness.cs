@@ -16,10 +16,12 @@ public class DS_TestHarness : MonoBehaviour
 
 
     private Transform camPiv;
+    private Transform groundcheck;
     // Use this for initialization
     void Start()
     {
         camPiv = GameObject.Find("CamPiv").transform;
+        groundcheck = GameObject.Find("GroundCheck").transform;
         animator = GetComponent<Animator>();
     }
 
@@ -36,17 +38,16 @@ public class DS_TestHarness : MonoBehaviour
 
         if (jump)
         {
-            animator.SetTrigger("Jump");
-
+            Jump();
         }
+        
 
         animator.SetFloat("Speed", forward);
 
         transform.Translate(Vector3.right * straf * Time.deltaTime);
-        camPiv.Rotate(Vector3.right * lookY * roationSpeedY * Time.deltaTime);
-
-        Debug.Log(lookX);
-        transform.Rotate( Vector3.up * lookX * roationSpeedX * Time.deltaTime);
+ 
+         camPiv.Rotate(Vector3.right * lookY * roationSpeedY * Time.deltaTime);
+        transform.Rotate( Vector3.up * lookX * roationSpeedX * Time.deltaTime); // I think i've labbled them wrong.
 
         if (forward > 0.1f)
         {
@@ -56,5 +57,18 @@ public class DS_TestHarness : MonoBehaviour
         {
             transform.Translate(Vector3.forward * forward *  Time.deltaTime);
         }
+    }
+
+    void Jump()
+    {
+        int layerMask = 1 << 8;
+
+        // Does the ray intersect any objects which are in the player layer.
+        var distance = Vector3.Distance(transform.position, groundcheck.position); // can cache this.
+
+        if (Physics.Raycast(transform.position, Vector3.up *-1,distance, layerMask))
+            animator.SetTrigger("Jump");
+        
+        
     }
 }
