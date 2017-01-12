@@ -5,7 +5,7 @@ public class DS_TestHarness : MonoBehaviour
 {
 
     Animator animator;
-    [Range(1f, 2f)]
+    [Range(1f, 5f)]
     public float WalkSpeed;
     [Range(1f, 2f)]
     public float StrafSpeed;
@@ -30,6 +30,10 @@ public class DS_TestHarness : MonoBehaviour
     {
 
         bool jump = Input.GetButtonDown("Jump");
+        bool attack = Input.GetButtonDown("Fire2");
+
+        float defending = Input.GetAxis("LeftTrigger");
+
         float forward = Input.GetAxis("Vertical");
         float straf = Input.GetAxis("Horizontal");
 
@@ -40,13 +44,21 @@ public class DS_TestHarness : MonoBehaviour
         {
             Jump();
         }
-        
 
-        animator.SetFloat("Speed", forward);
+        if(attack)
+        {
+            Attack();
+        }
+
+        animator.SetFloat("Defending", defending);
+
+        Debug.Log(defending);
+           
+        animator.SetFloat("Speed", forward * WalkSpeed);
 
         transform.Translate(Vector3.right * straf * Time.deltaTime);
  
-         camPiv.Rotate(Vector3.right * lookY * roationSpeedY * Time.deltaTime);
+        camPiv.Rotate(Vector3.right * lookY * roationSpeedY * Time.deltaTime);
         transform.Rotate( Vector3.up * lookX * roationSpeedX * Time.deltaTime); // I think i've labbled them wrong.
 
         if (forward > 0.1f)
@@ -58,15 +70,19 @@ public class DS_TestHarness : MonoBehaviour
             transform.Translate(Vector3.forward * forward *  Time.deltaTime);
         }
     }
-
+     
+    void Attack()
+    {
+        animator.SetTrigger("Attack1");
+    }
     void Jump()
     {
         int layerMask = 1 << 8;
 
         // Does the ray intersect any objects which are in the player layer.
-        var distance = Vector3.Distance(transform.position, groundcheck.position); // can cache this.
+       // var distance = Vector3.Distance(transform.position, groundcheck.position); // can cache this.
 
-        if (Physics.Raycast(transform.position, Vector3.up *-1,distance, layerMask))
+     //   if (Physics.Raycast(transform.position, Vector3.up *-1,distance, layerMask))
             animator.SetTrigger("Jump");
         
         
